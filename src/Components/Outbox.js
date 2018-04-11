@@ -13,15 +13,11 @@ class Outbox extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   handleClick() {
-    api.getOutbox(this.state.user).then(res => 
-      { this.setState({messages: res})
-    })
-    .catch(err => handleErrors(err));
+    this.getMessages(this.state.user)
   }
   handleDelete(id, user){
-    console.log("id", id)
     api.deleteMessages(id, user).then(res => {
-      console.log(res)
+      this.getMessages(this.state.user)
     })
     .catch(err => handleErrors(err));
   }
@@ -41,6 +37,12 @@ class Outbox extends Component {
         })
         .catch(err => handleErrors(err));
     }
+  }
+  getMessages(user){
+    api.getOutbox(user).then(res => 
+      { this.setState({messages: res})
+    })
+    .catch(err => handleErrors(err));
   }
   render(){
     let messages = this.state.messages

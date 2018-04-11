@@ -10,6 +10,13 @@ class Inbox extends Component {
       user: null,
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+  handleDelete(id, user){
+    api.deleteMessages(id, user).then(res => {
+      this.getMessages(this.state.user)
+    })
+    .catch(err => handleErrors(err));
   }
   handleClick() {
     api.getInbox(this.state.user).then(res => 
@@ -34,6 +41,12 @@ class Inbox extends Component {
       .catch(err => handleErrors(err));
     }
   }
+  getMessages(user){
+    api.getInbox(user).then(res => 
+      { this.setState({messages: res})
+    })
+    .catch(err => handleErrors(err));
+  }
   render(){
     let messages = this.state.messages
     return(
@@ -47,6 +60,7 @@ class Inbox extends Component {
               <p>Title: {message.title}</p>
               <p>Date Sent: {message.sent}</p>
               <p>Message: {message.body}</p>
+              <button onClick={() => this.handleDelete(message.id, this.state.user)}>Delete</button>
             </li>
           )
         }

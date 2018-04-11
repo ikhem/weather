@@ -42,7 +42,6 @@ class Compose extends Component {
     api.postMessages(message, this.state.user).then(response => {
       console.log("Response: ", response)
     })
-    event.preventDefault()
   }
 
   render(){
