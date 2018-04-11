@@ -15,8 +15,10 @@ export default {
 		}
 
 		return axios(options)
-			.then(res => { return res.data })
-			.catch(err => { handleErrors(err) })
+			.then(res => { 
+				console.log("RES", res)
+				return res.data 
+			})
 	},
 	getInbox: (user) => {
 		let url     = baseURL + `messages/`
@@ -42,7 +44,9 @@ export default {
 
 		return axios(options)
 			.then(res => { return res.data })
-			.catch(err => { handleErrors(err) })
+			.catch(err => {
+				handleErrors(err) 
+			})
 	},
 	postMessages: (message, user) => {
 		let url     = baseURL + `messages/`

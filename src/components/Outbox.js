@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api                  from '../utils/api';
 import handleErrors         from '../utils/helpers';
+import Message              from '../components/Message'
 
 class Outbox extends Component {
   constructor(props){
@@ -47,20 +48,13 @@ class Outbox extends Component {
   render(){
     let messages = this.state.messages
     return(
-      <div>
+      <div className="container">
         <h1>Outbox</h1>
-        {
-          messages.map(message => 
-            <li key={message.id}>
-              <p>ID: {message.id}</p>
-              <p>To: {message.receiver}</p>
-              <p>Title: {message.title}</p>
-              <p>Date Sent: {message.sent}</p>
-              <p>Message: {message.body}</p>
-              <button onClick={() => this.handleDelete(message.id, this.state.user)}>Delete</button>
-            </li>
-          )
-        }
+        <Message 
+          messages={messages}
+          user={this.state.user}
+          handleDelete={this.handleDelete}
+        />
       </div>
     )
   }

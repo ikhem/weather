@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import routes     from './utils/routes'
-import Navigation from './Components/Navigation'
+import Navigation from './components/Navigation'
 
 class App extends Component {
 
@@ -9,7 +9,9 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        { routes }
+        <div className="content">
+          { routes }
+        </div>
       </div>
     );
   }

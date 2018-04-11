@@ -1,11 +1,11 @@
 import React             from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import Login   from '../Components/Login'
-import Inbox   from '../Components/Inbox'
-import Outbox  from '../Components/Outbox'
-import Compose from '../Components/Compose'
-import Logout from '../Components/Logout';
+import Login   from '../components/Login'
+import Inbox   from '../components/Inbox'
+import Outbox  from '../components/Outbox'
+import Compose from '../components/Compose'
+import Logout from '../components/Logout';
 
 export default(
     <div>

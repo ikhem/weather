@@ -47,21 +47,19 @@ class Compose extends Component {
   render(){
     return(
       <div>
-        <h1>Compose Messages</h1>
+        <form className="form-signin" onSubmit={this.handleSubmit}>
+          <div className="test-center mb-4">
+            <h1>Compose</h1>
+          </div>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Title:
-            <input type="text" value={this.state.title} name="title" onChange={this.handleChange} />
-          </label>
+          <input type="text" value={this.state.receiver} name="receiver" onChange={this.handleChange} placeholder="To" />
+
+          <input type="text" value={this.state.title} name="title" onChange={this.handleChange} placeholder="Subject" />
+
           <label>
             Message:
           </label>
           <textarea type="text" value={this.state.body} name="body" onChange={this.handleChange} />
-          <label>
-            Receiver:
-            <input type="text" value={this.state.receiver} name="receiver" onChange={this.handleChange} />
-          </label>
           <input type="submit" value="Submit" />
         </form>
       </div>
